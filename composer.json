@@ -1,0 +1,25 @@
+{
+  "name": "tommyjs/composer-graphql-wp",
+  "description": "Getting start with WordPress and Composer",
+  "license": "MIT",
+  "repositories": [
+    {
+      "type":"composer",
+      "url":"https://wpackagist.org"
+    }
+  ],
+  "config" : {
+    "vendor-dir" : "wp-content/vendor"
+  },
+  "require": {
+    "composer/installers": "1.5.0",
+    "mohiohio/graphql-wp": "^0.5.3"
+  },
+  "extra": {
+    "installer-paths": {
+      "wp-content/plugins/{$name}": ["type:wordpress-plugin"],
+      "wp-content/themes/{$name}": ["type:wordpress-theme"],
+      "wp-content/mu-plugins/{$name}": ["type:wordpress-muplugin"]
+    }
+  }
+}

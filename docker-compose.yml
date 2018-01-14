@@ -1,0 +1,25 @@
+version: "2"
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DB}
+    ports:
+     - "${MYSQL_PORT}:3306"
+    logging:
+      driver: "none"
+
+  wordpress:
+    image: moonpress
+    container_name: moonpress
+    links:
+      - db
+    ports:
+      - "${WP_PORT}:80"
+    environment:
+     - WORDPRESS_DB_HOST=db:${MYSQL_PORT}
+     - WORDPRESS_DB_PASSWORD=${WP_PASSWORD}
+
